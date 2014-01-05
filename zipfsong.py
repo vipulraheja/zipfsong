@@ -8,7 +8,7 @@ m = int(num_songs[1])
 songs = []
 freqs = []
 
-if n is 0:
+if n <= 0 or m <= 0:
 	exit(0)
 
 for i in range(0,n):
@@ -30,17 +30,22 @@ quality = []
 
 for i in range(0,n):
 	'''Zipf Frequency'''
-	z = freqs[0]/(float)(i+1)
+#	z = freqs[0]/(float)(i+1)
+
+#	if freqs[0] <= 0:
+#		q1 = float(0)
+#	else:
+#		q1 = (float)(freqs[i] * i/freqs[0])
 
 	'''Quality'''
-	if z > 0.0:
-		q = ((float)(freqs[i]))/((float)(z))
-	else:
-		q = 0.0
+	q = (float)(freqs[i] * (i+1))
 	quality.append(q)
 
 '''Top m quality song indexes'''
 sorted_quality = sorted(range(len(quality)), key=quality.__getitem__, reverse=True)[0:m]
+
+#print quality
+#print sorted_quality
 
 
 '''Print Results'''
